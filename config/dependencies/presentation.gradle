@@ -24,7 +24,6 @@ dependencies {
     implementation project(':common')
 
 
-    implementation libraries.android.glide
     implementation libraries.dagger.support
     implementation libraries.android.liveData
     implementation libraries.android.constraintLayout
