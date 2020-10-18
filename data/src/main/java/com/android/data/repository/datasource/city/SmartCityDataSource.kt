@@ -1,5 +1,6 @@
 package com.android.data.repository.datasource.city
 
+import androidx.annotation.VisibleForTesting
 import com.android.data.assets.AssetsLoader
 import com.android.data.entity.model.local.City
 import com.android.data.trie.Trie
@@ -14,11 +15,20 @@ import javax.inject.Inject
 class SmartCityDataSource @Inject constructor(
     private val assets: AssetsLoader
 ) : CityDataSource {
-    private val cityTrie = Trie<City>()
 
+    @VisibleForTesting
+    lateinit var cityTrie: Trie<City>
+
+
+    override fun getCities(prefix: String): List<City> {
+        val trie: Trie<City>? = cityTrie
+        if (trie == null) cacheCities()
+        return cityTrie.findWords(prefix) ?: mutableListOf()
+    }
 
     override fun cacheCities(): Boolean {
         try {
+            cityTrie = Trie()
             loadFromAssets(CITIES_FILE).forEach { city ->
                 cityTrie.insert(city, city.name)
             }
