@@ -4,8 +4,7 @@ import androidx.fragment.app.FragmentManager
 import com.android.presentation.R
 import com.android.presentation.common.extension.addFragment
 import com.android.presentation.common.view.BaseActivityModule
-import com.android.presentation.ui.detail.DetailFragment
-import com.android.presentation.ui.repositories.RepositoryFragment
+import com.android.presentation.ui.spash.SplashFragment
 import javax.inject.Inject
 import javax.inject.Named
 
@@ -19,18 +18,10 @@ class Navigator @Inject constructor(
     private val fragmentManager: FragmentManager
 ) {
 
-    fun showRepositories() {
+    fun showSplash() {
         fragmentManager.addFragment(
             containerViewId = R.id.fragmentContainer,
-            fragment = RepositoryFragment.newInstance()
-        )
-    }
-
-    fun showDetail(nameWithOwner: String) {
-        fragmentManager.addFragment(
-            containerViewId = R.id.fragmentContainer,
-            fragment = DetailFragment.newInstance(nameWithOwner),
-            tag = DetailFragment::class.java.name
+            fragment = SplashFragment.newInstance()
         )
     }
 
