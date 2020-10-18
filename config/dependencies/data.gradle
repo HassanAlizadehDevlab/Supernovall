@@ -1,0 +1,27 @@
+/**
+ * Declare all dependencies for the data layer
+ * */
+android {
+    sourceSets {
+        test {
+            java {
+                srcDir "../common_test/src/test/java"
+            }
+            resources {
+                srcDir "../common_test/src/test/resources"
+            }
+        }
+    }
+}
+
+dependencies {
+    def libraries = rootProject.ext.libraries
+
+    implementation project(':domain')
+    implementation project(':common')
+
+    implementation libraries.gson
+
+    testImplementation project(':common_test')
+    testImplementation libraries.test.android.atsl.runner
+}

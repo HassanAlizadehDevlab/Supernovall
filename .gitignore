@@ -12,3 +12,9 @@
 /captures
 .externalNativeBuild
 .cxx
+/data/build/
+/domain/build/
+/presentation/build/
+/common/build/
+/common_test/build/
+/app/build/

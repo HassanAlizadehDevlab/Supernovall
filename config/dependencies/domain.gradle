@@ -1,0 +1,26 @@
+/**
+ * Declare all dependencies for the domain layer
+ * */
+android {
+    sourceSets {
+        test {
+            java {
+                srcDir "../common_test/src/test/java"
+            }
+            resources {
+                srcDir "../common_test/src/test/resources"
+            }
+        }
+    }
+}
+
+
+dependencies {
+    def libraries = rootProject.ext.libraries
+
+    implementation project(':common')
+
+    implementation libraries.gson
+
+    testImplementation project(':common_test')
+}
