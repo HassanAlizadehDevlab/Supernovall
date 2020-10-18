@@ -9,6 +9,7 @@ import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
 import com.android.presentation.R
 import com.android.presentation.common.extension.observe
+import com.android.presentation.common.extension.toast
 import com.android.presentation.common.extension.viewModelProvider
 import com.android.presentation.common.view.BaseFragment
 import com.android.presentation.common.viewmodel.ViewModelProviderFactory
@@ -44,7 +45,12 @@ class SplashFragment : BaseFragment() {
     }
 
     private fun observe(status: Boolean) {
-        TODO("Show City Page")
+        if (status)
+            navigator.showCityList()
+        else {
+            activityContext.toast(R.string.error)
+            navigator.onBackPressed()
+        }
     }
 
     private fun startAnimating() {

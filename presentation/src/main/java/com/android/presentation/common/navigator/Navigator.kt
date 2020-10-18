@@ -1,12 +1,12 @@
 package com.android.presentation.common.navigator
 
-import androidx.fragment.app.FragmentManager
+import androidx.appcompat.app.AppCompatActivity
 import com.android.presentation.R
 import com.android.presentation.common.extension.addFragment
-import com.android.presentation.common.view.BaseActivityModule
+import com.android.presentation.ui.MainActivity
+import com.android.presentation.ui.city.CityFragment
 import com.android.presentation.ui.spash.SplashFragment
 import javax.inject.Inject
-import javax.inject.Named
 
 /**
  * Handle all navigation in here.
@@ -14,15 +14,27 @@ import javax.inject.Named
  * @param fragmentManager is [MainActivity]'s fragmentManager.
  */
 class Navigator @Inject constructor(
-    @Named(BaseActivityModule.ACTIVITY_FRAGMENT_MANAGER)
-    private val fragmentManager: FragmentManager
+    private val activity: AppCompatActivity
 ) {
+    private val fragmentManager = activity.supportFragmentManager
 
     fun showSplash() {
         fragmentManager.addFragment(
             containerViewId = R.id.fragmentContainer,
             fragment = SplashFragment.newInstance()
         )
+    }
+
+    fun showCityList() {
+        fragmentManager.addFragment(
+            containerViewId = R.id.fragmentContainer,
+            fragment = CityFragment.newInstance(),
+            tag = CityFragment::class.java.name
+        )
+    }
+
+    fun onBackPressed() {
+        activity.finish()
     }
 
 }
