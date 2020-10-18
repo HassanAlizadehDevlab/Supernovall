@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Supernova ll</string>
+    <string name="loading">Loading ...</string>
+    <string name="backbase_android_assignment">Backbase Android Assignment</string>
 </resources>
