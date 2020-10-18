@@ -1,9 +1,13 @@
 package com.android.supernovall
 
-import android.app.Application
+import android.content.Context
+import com.android.presentation.common.di.ActivityScope
+import com.android.presentation.ui.MainActivity
+import com.android.presentation.ui.MainActivityModule
 import dagger.Binds
 import dagger.Module
 import dagger.android.AndroidInjectionModule
+import dagger.android.ContributesAndroidInjector
 import javax.inject.Singleton
 
 /**
@@ -14,6 +18,10 @@ abstract class SupernovaModule {
 
     @Binds
     @Singleton
-    abstract fun application(application: Supernova): Application
+    abstract fun context(application: Supernova): Context
+
+    @ActivityScope
+    @ContributesAndroidInjector(modules = [MainActivityModule::class])
+    abstract fun mainActivityInjector(): MainActivity
 
 }
