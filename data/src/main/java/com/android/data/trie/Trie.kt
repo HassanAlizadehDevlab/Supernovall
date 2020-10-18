@@ -16,4 +16,31 @@ class Trie<T> {
         current.addValue(value)
         current.setEndOfItem()
     }
+
+    fun findWords(prefix: String): List<T>? {
+        if (prefix.isEmpty()) return null
+        val lastNode = findLastNodeOf(prefix) ?: return null
+
+        val words = mutableListOf<T>()
+        findWords(prefix)
+        return words
+    }
+
+    private fun findWords(root: Node<T>, words: MutableList<T>) {
+        if (root.isEndOfItem() && !root.getValues().isNullOrEmpty())
+            root.getValues()?.forEach { words.add(it) }
+
+        for (child in root.getChildren())
+            findWords(child, words)
+    }
+
+    private fun findLastNodeOf(prefix: String): Node<T>? {
+        var current = root
+        for (ch in prefix) {
+            current = current.getChild(ch) ?: return null
+        }
+
+        return current
+    }
+
 }
