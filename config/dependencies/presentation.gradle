@@ -25,7 +25,7 @@ dependencies {
 
 
     implementation libraries.dagger.support
-    implementation libraries.android.liveData
+    implementation libraries.android.liveData.liveData
     implementation libraries.android.constraintLayout
     implementation libraries.android.androidxAppCompat
     implementation libraries.android.lifecycleExtensions

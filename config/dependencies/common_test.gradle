@@ -13,7 +13,7 @@ dependencies {
     implementation libraries.dagger.android
     implementation libraries.gson
 
-    testImplementation libraries.android.liveData
+    testImplementation libraries.android.liveData.liveData
     testImplementation libraries.android.lifecycleExtensions
     testImplementation libraries.gson
     testImplementation libraries.test.android.archCore

@@ -88,8 +88,11 @@ ext {
                     fragment             : "androidx.fragment:fragment:${versions.fragment}",
                     recyclerView         : "androidx.recyclerview:recyclerview:${versions.androidx}",
                     constraintLayout     : "androidx.constraintlayout:constraintlayout:${versions.constraint}",
-                    liveData             : "androidx.lifecycle:lifecycle-livedata:${versions.archComponent}",
-                    liveData_ktx         : "androidx.lifecycle:lifecycle-livedata-ktx:${versions.archComponent}",
+                    liveData             : [
+                            liveData: "androidx.lifecycle:lifecycle-livedata:${versions.archComponent}",
+                            ktx     : "androidx.lifecycle:lifecycle-livedata-ktx:${versions.archComponent}",
+                            runtime : "androidx.lifecycle:lifecycle-runtime:${versions.archComponent}"
+                    ],
                     viewmodel            : "androidx.lifecycle:lifecycle-viewmodel:${versions.archComponent}",
                     lifecycleExtensions  : "androidx.lifecycle:lifecycle-extensions:${versions.archComponent}",
                     archComponentsStreams: "androidx.lifecycle:lifecycle-reactivestreams:${versions.archComponent}",
