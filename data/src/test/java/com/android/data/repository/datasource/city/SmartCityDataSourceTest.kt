@@ -42,7 +42,7 @@ class SmartCityDataSourceTest {
         val cities = dataSource.getCities(prefix)
 
         // THEN
-        assert(cities.size == TestUtils.lengthOfCityListWith_A_Prefix())
+        assert(cities.size == TestUtils.lengthOfCityListWithPrefix(prefix))
         cities.forEach {
             assert(it.name.startsWith(prefix))
         }
@@ -60,7 +60,7 @@ class SmartCityDataSourceTest {
         val cities = dataSource.getCities(prefix)
 
         // THEN
-        assert(cities.size == TestUtils.lengthOfCityListWith_a_Prefix())
+        assert(cities.size == TestUtils.lengthOfCityListWithPrefix(prefix))
         cities.forEach {
             assert(it.name.startsWith(prefix))
         }
@@ -78,7 +78,7 @@ class SmartCityDataSourceTest {
         val cities = dataSource.getCities(prefix)
 
         // THEN
-        assert(cities.size == TestUtils.lengthOfCityListWith_J_Prefix())
+        assert(cities.size == TestUtils.lengthOfCityListWithPrefix(prefix))
         cities.forEach {
             assert(it.name.startsWith(prefix))
         }
@@ -95,6 +95,5 @@ class SmartCityDataSourceTest {
         // THEN
         assert(isSuccess)
     }
-
 
 }

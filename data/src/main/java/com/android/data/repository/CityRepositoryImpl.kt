@@ -1,4 +1,4 @@
-package com.android.data.repository.city
+package com.android.data.repository
 
 import com.android.data.entity.mapper.map
 import com.android.data.repository.datasource.city.CityDataSource

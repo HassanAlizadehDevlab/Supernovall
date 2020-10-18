@@ -12,9 +12,13 @@ import java.io.InputStreamReader
  */
 object TestUtils {
 
-    fun lengthOfCityListWith_A_Prefix() = cityList().filter { it.name.startsWith("A") }.size
-    fun lengthOfCityListWith_a_Prefix() = cityList().filter { it.name.startsWith("a") }.size
-    fun lengthOfCityListWith_J_Prefix()= cityList().filter { it.name.startsWith("J") }.size
+    fun lengthOfCityListWithPrefix(prefix: String) =
+        cityList().filter { it.name.startsWith(prefix) }.size
+
+
+    fun filter(prefix: String): List<City> {
+        return cityList().filter { it.name.startsWith(prefix) }
+    }
 
     fun cityTrie(): Trie<City> {
         val trie = Trie<City>()
