@@ -22,7 +22,7 @@ class Trie<T> {
         val lastNode = findLastNodeOf(prefix) ?: return null
 
         val words = mutableListOf<T>()
-        findWords(prefix)
+        findWords(lastNode, words)
         return words
     }
 
@@ -41,6 +41,10 @@ class Trie<T> {
         }
 
         return current
+    }
+
+    public fun hasNode(): Boolean {
+        return root.getChildren().isNullOrEmpty().not()
     }
 
 }
