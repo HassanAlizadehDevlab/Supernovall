@@ -6,10 +6,10 @@ package com.android.data.trie
 class Trie<T> {
     private val root: Node<T> = HashMapNode()
 
-    fun insert(value: T, name: () -> String) {
+    fun insert(value: T, name: String) {
         var current = root
 
-        for (ch in name.invoke()) {
+        for (ch in name) {
             current.addChild(ch)
             current = current.getChild(ch) ?: break
         }
