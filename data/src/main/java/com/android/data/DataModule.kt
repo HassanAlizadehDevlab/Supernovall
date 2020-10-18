@@ -1,5 +1,6 @@
 package com.android.data
 
+import com.android.data.assets.AssetsModule
 import com.android.data.repository.RepositoryModule
 import dagger.Module
 
@@ -8,6 +9,7 @@ import dagger.Module
  */
 @Module(
     includes = [
+        AssetsModule::class,
         RepositoryModule::class
     ]
 )
