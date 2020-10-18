@@ -32,7 +32,8 @@ class HashMapNode<T> : Node<T> {
         if (children == null)
             children = mutableMapOf()
 
-        children[nameSpace] = HashMapNode()
+        if (!children.containsKey(nameSpace))
+            children[nameSpace] = HashMapNode()
     }
 
     override fun getChild(nameSpace: Char): Node<T>? {
