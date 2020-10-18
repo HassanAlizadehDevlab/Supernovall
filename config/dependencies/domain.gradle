@@ -18,9 +18,6 @@ android {
 dependencies {
     def libraries = rootProject.ext.libraries
 
-    implementation project(':common')
-
     implementation libraries.gson
-
     testImplementation project(':common_test')
 }

@@ -7,7 +7,6 @@ dependencies {
     api project(':data')
     api project(':domain')
     api project(':presentation')
-    api project(':common')
 
     implementation libraries.kotlin.kotlin
     implementation libraries.dagger.android
