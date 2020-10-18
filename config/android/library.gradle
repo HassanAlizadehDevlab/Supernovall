@@ -45,5 +45,6 @@ android {
         testImplementation libraries.test.junit
         testImplementation libraries.test.mockito.core
         testImplementation libraries.test.mockito.kotlin
+        testImplementation libraries.android.liveData_ktx
     }
 }

@@ -1,19 +1,24 @@
 package com.android.presentation.ui
 
-import android.content.Context
-import com.android.presentation.common.di.ActivityScope
-import dagger.Binds
+import com.android.presentation.common.di.FragmentScope
+import com.android.presentation.common.view.BaseActivityModule
+import com.android.presentation.ui.spash.SplashFragment
+import com.android.presentation.ui.spash.SplashFragmentModule
 import dagger.Module
+import dagger.android.ContributesAndroidInjector
 
 /**
  * Created by hassanalizadeh on 18,October,2020
  */
-@Module
+@Module(
+    includes = [
+        BaseActivityModule::class
+    ]
+)
 abstract class MainActivityModule {
 
-    @Binds
-    @ActivityScope
-    abstract fun activityScope(activity: MainActivity): Context
-
+    @FragmentScope
+    @ContributesAndroidInjector(modules = [SplashFragmentModule::class])
+    abstract fun splashFragmentInjector(): SplashFragment
 
 }
