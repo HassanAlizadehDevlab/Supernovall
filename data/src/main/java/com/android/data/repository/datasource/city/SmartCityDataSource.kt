@@ -16,9 +16,14 @@ class SmartCityDataSource @Inject constructor(
 ) : CityDataSource {
     private val cityTrie = Trie<City>()
 
+
     override fun cacheCities(): Boolean {
-        loadFromAssets(CITIES_FILE).forEach { city ->
-            cityTrie.insert(city, city.name)
+        try {
+            loadFromAssets(CITIES_FILE).forEach { city ->
+                cityTrie.insert(city, city.name)
+            }
+        } catch (e: Exception) {
+            return false
         }
         return true
     }
@@ -26,7 +31,7 @@ class SmartCityDataSource @Inject constructor(
     private fun loadFromAssets(path: String): List<City> {
         val reader = InputStreamReader(assets.open(path))
         val typeToken = object : TypeToken<List<City>>() {}.type
-        return Gson().fromJson(reader, typeToken)
+        return Gson().fromJson<List<City>>(reader, typeToken)
     }
 
     companion object {

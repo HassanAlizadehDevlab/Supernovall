@@ -4,8 +4,8 @@ package com.android.data.trie
  * Created by hassanalizadeh on 18,October,2020
  */
 class HashMapNode<T> : Node<T> {
-    private lateinit var values: MutableList<T>
-    private lateinit var children: MutableMap<Char, Node<T>>
+    private var values: MutableList<T>? = null
+    private var children: MutableMap<Char, Node<T>>? = null
     private var isEndOfItem: Boolean = false
 
 
@@ -13,7 +13,7 @@ class HashMapNode<T> : Node<T> {
         if (values == null)
             values = mutableListOf()
 
-        values.add(value)
+        values?.add(value)
     }
 
     override fun getValues(): MutableList<T>? {
@@ -32,20 +32,20 @@ class HashMapNode<T> : Node<T> {
         if (children == null)
             children = mutableMapOf()
 
-        if (!children.containsKey(nameSpace))
-            children[nameSpace] = HashMapNode()
+        if (children?.containsKey(nameSpace)?.or(false) == false)
+            children?.put(nameSpace, HashMapNode())
     }
 
     override fun getChild(nameSpace: Char): Node<T>? {
-        return children[nameSpace]
+        return children?.get(nameSpace)
     }
 
     override fun hasChild(nameSpace: Char): Boolean {
-        return children.containsKey(nameSpace)
+        return children?.containsKey(nameSpace) ?: false
     }
 
     override fun getChildren(): MutableList<Node<T>> {
-        return children.values.toMutableList()
+        return children?.values?.toMutableList() ?: mutableListOf()
     }
 
 }
