@@ -33,6 +33,7 @@ dependencies {
     implementation libraries.android.core_ktx
     implementation libraries.android.recyclerView
     implementation libraries.gson
+    implementation libraries.android.maps
 
     testImplementation project(':common_test')
     testImplementation libraries.gson
