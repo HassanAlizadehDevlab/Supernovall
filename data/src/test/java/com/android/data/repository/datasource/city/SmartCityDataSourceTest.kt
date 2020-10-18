@@ -32,6 +32,59 @@ class SmartCityDataSourceTest {
 
 
     @Test
+    fun `city list size by prefix "A" filter is 3`() {
+        // GIVEN
+        val prefix = "A"
+        val trie = TestUtils.cityTrie()
+        dataSource.cityTrie = trie
+
+        // WHEN
+        val cities = dataSource.getCities(prefix)
+
+        // THEN
+        assert(cities.size == TestUtils.lengthOfCityListWith_A_Prefix())
+        cities.forEach {
+            assert(it.name.startsWith(prefix))
+        }
+    }
+
+
+    @Test
+    fun `filter cities by prefix "a" is case sensitive`() {
+        // GIVEN
+        val prefix = "a"
+        val trie = TestUtils.cityTrie()
+        dataSource.cityTrie = trie
+
+        // WHEN
+        val cities = dataSource.getCities(prefix)
+
+        // THEN
+        assert(cities.size == TestUtils.lengthOfCityListWith_a_Prefix())
+        cities.forEach {
+            assert(it.name.startsWith(prefix))
+        }
+    }
+
+
+    @Test
+    fun `filter cities by prefix J`() {
+        // GIVEN
+        val prefix = "J"
+        val trie = TestUtils.cityTrie()
+        dataSource.cityTrie = trie
+
+        // WHEN
+        val cities = dataSource.getCities(prefix)
+
+        // THEN
+        assert(cities.size == TestUtils.lengthOfCityListWith_J_Prefix())
+        cities.forEach {
+            assert(it.name.startsWith(prefix))
+        }
+    }
+
+    @Test
     fun `load cities in trie`() {
         // GIVEN
         doReturn(TestUtils.cityStream()).whenever(assetsLoader).open(anyString())
