@@ -5,6 +5,7 @@ import com.android.data.repository.datasource.city.CityDataSource
 import com.android.domain.entity.CityObject
 import com.android.domain.repository.CityRepository
 import com.nhaarman.mockitokotlin2.doReturn
+import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.whenever
 import org.junit.Before
 import org.junit.Test
@@ -43,6 +44,7 @@ class CityRepositoryImplTest {
         val cities = repository.getCities(prefix)
 
         // THEN
+        verify(dataSource).getCities(prefix)
         assert(cities.size == TestUtils.lengthOfCityListWithPrefix(prefix))
         cities.forEach {
             assert(it is CityObject)
@@ -60,6 +62,7 @@ class CityRepositoryImplTest {
         val isSuccess = repository.cacheCities()
 
         // THEN
+        verify(dataSource).cacheCities()
         assert(isSuccess == success)
     }
 

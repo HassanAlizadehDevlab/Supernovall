@@ -17,20 +17,19 @@ class SmartCityDataSource @Inject constructor(
 ) : CityDataSource {
 
     @VisibleForTesting
-    lateinit var cityTrie: Trie<City>
+    var cityTrie: Trie<City>? = null
 
 
     override fun getCities(prefix: String): List<City> {
-        val trie: Trie<City>? = cityTrie
-        if (trie == null) cacheCities()
-        return cityTrie.findWords(prefix) ?: mutableListOf()
+        if (cityTrie == null) cacheCities()
+        return cityTrie?.findWords(prefix) ?: mutableListOf()
     }
 
     override fun cacheCities(): Boolean {
         try {
             cityTrie = Trie()
             loadFromAssets(CITIES_FILE).forEach { city ->
-                cityTrie.insert(city, city.name)
+                cityTrie?.insert(city, city.name)
             }
         } catch (e: Exception) {
             return false

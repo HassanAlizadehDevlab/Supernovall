@@ -4,6 +4,7 @@ import com.android.common_test.TestUtils
 import com.android.data.assets.AssetsLoader
 import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.spy
+import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.whenever
 import org.junit.Before
 import org.junit.Test
@@ -78,10 +79,24 @@ class SmartCityDataSourceTest {
         val cities = dataSource.getCities(prefix)
 
         // THEN
+        verify(dataSource).getCities(prefix)
         assert(cities.size == TestUtils.lengthOfCityListWithPrefix(prefix))
         cities.forEach {
             assert(it.name.startsWith(prefix))
         }
+    }
+
+
+    @Test
+    fun `city trie is not initialized`() {
+        // GIVEN
+        val prefix = "J"
+
+        // WHEN
+        dataSource.getCities(prefix)
+
+        // THEN
+        verify(dataSource).cacheCities()
     }
 
     @Test
