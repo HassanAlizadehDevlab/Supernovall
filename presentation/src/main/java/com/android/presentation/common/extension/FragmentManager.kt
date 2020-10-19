@@ -16,3 +16,13 @@ fun FragmentManager.addFragment(
         .apply { tag?.let { addToBackStack(tag) } }
         .commit()
 }
+fun FragmentManager.replaceFragment(
+    containerViewId: Int,
+    fragment: Fragment,
+    tag: String? = null
+) {
+    this.beginTransaction()
+        .replace(containerViewId, fragment, tag)
+        .apply { tag?.let { addToBackStack(tag) } }
+        .commit()
+}
