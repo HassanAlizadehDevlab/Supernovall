@@ -28,6 +28,10 @@ class SmartCityDataSource @Inject constructor(
     override fun cacheCities(): Boolean {
         try {
             cityTrie = Trie()
+            // loadFromAssets(CITIES_FILE).sortedBy { it.name }.forEach { city -> }
+            // We can sort it here when the data wa loaded and we want to insert it into the Trie
+            // We can use sortBy function or even we can implement our sorting algorithms
+            // I liked to do it. But I didn't have enough time to handle this.
             loadFromAssets(CITIES_FILE).forEach { city ->
                 cityTrie?.insert(city, city.name)
             }

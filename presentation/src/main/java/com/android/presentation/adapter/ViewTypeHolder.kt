@@ -9,10 +9,12 @@ import com.android.presentation.R
  */
 object ViewTypeHolder {
 
+    val CITY_VIEW: Int = R.layout.adapter_city
+
     fun getView(obj: DomainObject?): Int {
         if (obj == null) return 0
         return when (obj) {
-            is CityObject -> R.layout.adapter_city
+            is CityObject -> CITY_VIEW
 
             else -> 0
         }

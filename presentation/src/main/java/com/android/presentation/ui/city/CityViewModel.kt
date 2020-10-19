@@ -19,8 +19,7 @@ class CityViewModel @Inject constructor(
     fun filter(prefix: String = "") {
         val thread = Thread {
             try {
-                val result = filterCitiesUseCase.invoke(prefix)
-                cities.postValue(result)
+                cities.postValue(filterCitiesUseCase.invoke(prefix))
             } catch (e: InterruptedException) {
                 cities.postValue(mutableListOf())
             }
