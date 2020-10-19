@@ -5,6 +5,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.android.presentation.common.di.ActivityScope
 import com.android.presentation.common.di.FragmentScope
 import com.android.presentation.common.viewmodel.ViewModelProviderFactory
+import com.android.presentation.ui.city.CityFragment
+import com.android.presentation.ui.city.CityFragmentModule
 import com.android.presentation.ui.spash.SplashFragment
 import com.android.presentation.ui.spash.SplashFragmentModule
 import dagger.Binds
@@ -20,6 +22,10 @@ abstract class MainActivityModule {
     @FragmentScope
     @ContributesAndroidInjector(modules = [SplashFragmentModule::class])
     abstract fun splashFragmentInjector(): SplashFragment
+
+    @FragmentScope
+    @ContributesAndroidInjector(modules = [CityFragmentModule::class])
+    abstract fun cityFragmentInjector(): CityFragment
 
 
     /**
