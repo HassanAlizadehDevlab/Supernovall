@@ -24,6 +24,6 @@ Time complexity of finding an object is O(L). L -> Length
 
 #### I would like to:
 - Implement sorting algorithm
-- Implement threading more efficient. Like, interrupt old threads when a new character want to search in a new thread
+- Implement more efficient threading. Like, interrupt old threads when a new character want to search in a new thread
 - Implement more attractive animations to laod data
 - ...
