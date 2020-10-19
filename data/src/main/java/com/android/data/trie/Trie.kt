@@ -18,8 +18,8 @@ class Trie<T> {
     }
 
     fun findWords(prefix: String): List<T>? {
-        if (prefix.isEmpty()) return null
         val lastNode = findLastNodeOf(prefix) ?: return null
+        // if (prefix.isEmpty()) return null
 
         val words = mutableListOf<T>()
         findWords(lastNode, words)
