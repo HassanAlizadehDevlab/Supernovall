@@ -5,5 +5,5 @@ package com.android.domain.entity
  */
 data class CoordObject(
     val lon: Double,
-    val lan: Double
+    val lat: Double
 )

@@ -10,4 +10,4 @@ import com.android.domain.entity.CoordObject
  */
 fun List<City>.map() = map { it.map() }
 fun City.map() = CityObject(_id = _id, name = name, country = country, coord = coord.map())
-fun Coord.map() = CoordObject(lon = lon, lan = lan)
+fun Coord.map() = CoordObject(lon = lon, lat = lat)

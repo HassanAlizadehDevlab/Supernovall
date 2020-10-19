@@ -51,7 +51,7 @@ class MapFragment : BaseFragment(), OnMapReadyCallback {
                 .position(location)
                 .title(name)
         )
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 9.0f))
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 12.0f))
     }
 
     /**
@@ -59,22 +59,22 @@ class MapFragment : BaseFragment(), OnMapReadyCallback {
      * second is the location of the place
      * */
     private fun getLocation(): Pair<String, LatLng>? {
-        val lan = arguments?.getDouble(LAN) ?: return null
+        val lat = arguments?.getDouble(LAT) ?: return null
         val lon = arguments?.getDouble(LON) ?: return null
         val name = arguments?.getString(NAME) ?: return null
 
-        return name to LatLng(lan, lon)
+        return name to LatLng(lat, lon)
     }
 
     companion object {
         private const val NAME = "name"
+        private const val LAT = "lat"
         private const val LON = "lon"
-        private const val LAN = "lan"
-        fun newInstance(name: String, lan: Double, lon: Double): MapFragment =
+        fun newInstance(name: String, lat: Double, lon: Double): MapFragment =
             MapFragment().apply {
                 arguments = Bundle().apply {
                     putString(NAME, name)
-                    putDouble(LAN, lan)
+                    putDouble(LAT, lat)
                     putDouble(LON, lon)
                 }
             }

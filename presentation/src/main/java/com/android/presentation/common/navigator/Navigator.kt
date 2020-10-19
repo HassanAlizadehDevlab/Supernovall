@@ -34,10 +34,10 @@ class Navigator @Inject constructor(
         )
     }
 
-    fun showMap(name: String, lan: Double, lon: Double) {
+    fun showMap(name: String, lat: Double, lon: Double) {
         fragmentManager.addFragment(
             containerViewId = R.id.fragmentContainer,
-            fragment = MapFragment.newInstance(name, lan, lon),
+            fragment = MapFragment.newInstance(name, lat, lon),
             tag = MapFragment::class.java.name
         )
     }

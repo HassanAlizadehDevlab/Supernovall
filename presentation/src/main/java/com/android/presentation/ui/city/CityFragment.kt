@@ -87,7 +87,7 @@ class CityFragment : BaseFragment() {
             is ViewCityOnMapAction -> {
                 navigator.showMap(
                     action.data.name,
-                    action.data.coord.lan,
+                    action.data.coord.lat,
                     action.data.coord.lon
                 )
             }

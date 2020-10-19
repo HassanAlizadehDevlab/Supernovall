@@ -5,5 +5,5 @@ package com.android.data.entity.model.local
  */
 data class Coord(
     val lon: Double,
-    val lan: Double
+    val lat: Double
 )
