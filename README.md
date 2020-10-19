@@ -17,7 +17,7 @@ Time complexity of finding an object is O(L). L -> Length
 - Constraint Layout and Motion Layout, ...
 
 
-### I avoided to use:
+### I avoid to use:
 - RxJava and do threading With Java Threads
 - ...
 
