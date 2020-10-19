@@ -16,5 +16,5 @@ abstract class CityViewModelModule {
     @IntoMap
     @FragmentScope
     @ViewModelKey(CityViewModel::class)
-    abstract fun repositoryViewModel(viewModel: CityViewModel): ViewModel
+    abstract fun cityViewModel(viewModel: CityViewModel): ViewModel
 }

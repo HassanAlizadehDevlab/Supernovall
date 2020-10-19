@@ -1,9 +1,10 @@
 package com.android.presentation.ui.city
 
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.android.domain.entity.CityObject
 import com.android.domain.usecase.FilterCitiesUseCase
-import com.android.presentation.common.view.BaseViewModel
+import com.android.presentation.adapter.BaseAction
 import javax.inject.Inject
 
 /**
@@ -11,27 +12,25 @@ import javax.inject.Inject
  */
 class CityViewModel @Inject constructor(
     private val filterCitiesUseCase: FilterCitiesUseCase
-) : BaseViewModel() {
-
+) : ViewModel() {
     val cities = MutableLiveData<List<CityObject>>()
+    val clickObserver = MutableLiveData<BaseAction>()
 
-    fun filter(prefix: String) {
-        // Interrupt all threads
-        clearThreads()
-
+    fun filter(prefix: String = "") {
         val thread = Thread {
             try {
                 val result = filterCitiesUseCase.invoke(prefix)
-                if (Thread.interrupted()) return@Thread
                 cities.postValue(result)
-            } catch (e: Exception) {
-                // Do nothing
-                println("Thread: stopped")
+            } catch (e: InterruptedException) {
+                cities.postValue(mutableListOf())
             }
         }
 
-        thread.track()
         thread.start()
+    }
+
+    fun clickObserver(action: BaseAction) {
+        clickObserver.value = action
     }
 
 }

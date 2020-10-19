@@ -1,9 +1,9 @@
 package com.android.presentation.ui.spash
 
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.android.domain.usecase.CacheCitiesUseCase
 import com.android.domain.usecase.invoke
-import com.android.presentation.common.view.BaseViewModel
 import javax.inject.Inject
 
 /**
@@ -11,7 +11,7 @@ import javax.inject.Inject
  */
 class SplashViewModel @Inject constructor(
     private val cacheCitiesUseCase: CacheCitiesUseCase
-) : BaseViewModel() {
+) : ViewModel() {
 
     val isFinished = MutableLiveData<Boolean>()
 
@@ -23,8 +23,6 @@ class SplashViewModel @Inject constructor(
         val thread = Thread {
             val success = cacheCitiesUseCase.invoke()
             isFinished.postValue(success)
-        }.apply {
-            track()
         }
 
         thread.start()

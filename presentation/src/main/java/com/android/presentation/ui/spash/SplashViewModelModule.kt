@@ -16,5 +16,5 @@ abstract class SplashViewModelModule {
     @IntoMap
     @FragmentScope
     @ViewModelKey(SplashViewModel::class)
-    abstract fun repositoryViewModel(viewModel: SplashViewModel): ViewModel
+    abstract fun splashViewModel(viewModel: SplashViewModel): ViewModel
 }
