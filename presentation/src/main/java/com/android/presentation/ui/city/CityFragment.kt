@@ -85,7 +85,11 @@ class CityFragment : BaseFragment() {
     private fun observeClicks(action: BaseAction) {
         when (action) {
             is ViewCityOnMapAction -> {
-                println("Hassan, Go to map page")
+                navigator.showMap(
+                    action.data.name,
+                    action.data.coord.lan,
+                    action.data.coord.lon
+                )
             }
         }
     }

@@ -6,6 +6,7 @@ import com.android.presentation.common.extension.addFragment
 import com.android.presentation.common.extension.replaceFragment
 import com.android.presentation.ui.MainActivity
 import com.android.presentation.ui.city.CityFragment
+import com.android.presentation.ui.map.MapFragment
 import com.android.presentation.ui.spash.SplashFragment
 import javax.inject.Inject
 
@@ -29,8 +30,15 @@ class Navigator @Inject constructor(
     fun showCityList() {
         fragmentManager.replaceFragment(
             containerViewId = R.id.fragmentContainer,
-            fragment = CityFragment.newInstance(),
-            tag = CityFragment::class.java.name
+            fragment = CityFragment.newInstance()
+        )
+    }
+
+    fun showMap(name: String, lan: Double, lon: Double) {
+        fragmentManager.addFragment(
+            containerViewId = R.id.fragmentContainer,
+            fragment = MapFragment.newInstance(name, lan, lon),
+            tag = MapFragment::class.java.name
         )
     }
 
