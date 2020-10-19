@@ -2,18 +2,27 @@
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/white"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical">
 
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/loadingIndicator"
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/edtFilter"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="@dimen/_40sdp"
+        android:layout_margin="@dimen/_4sdp"
+        android:background="@drawable/background_curve_black"
+        android:gravity="center_vertical"
+        android:hint="@string/search"
+        android:maxLines="1"
+        android:padding="@dimen/_4sdp"
+        android:textColor="@color/colorPrimary"
+        android:textColorHint="@color/colorTertiaryText" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        tools:listitem="@layout/adapter_city"
+        android:layout_height="match_parent" />
 
 </androidx.appcompat.widget.LinearLayoutCompat>
