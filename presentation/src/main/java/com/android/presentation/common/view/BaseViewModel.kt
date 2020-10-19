@@ -14,8 +14,12 @@ abstract class BaseViewModel : ViewModel() {
         disposable.add(this)
     }
 
+    protected fun clearThreads() {
+        disposable.clear()
+    }
+
     override fun onCleared() {
         super.onCleared()
-        disposable.clear()
+        clearThreads()
     }
 }
