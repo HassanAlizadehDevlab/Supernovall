@@ -10,9 +10,7 @@ import com.android.domain.entity.DomainObject
  */
 abstract class BaseViewHolder<T : DomainObject>(view: View) : RecyclerView.ViewHolder(view) {
 
-//    protected val mSubject = PublishSubject.create<BaseAction>()
-
-    abstract fun getType(): Int
+    lateinit var listener: (BaseAction) -> Unit
 
     abstract fun bind(data: DomainObject?)
 
