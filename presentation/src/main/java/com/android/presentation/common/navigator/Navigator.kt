@@ -3,6 +3,7 @@ package com.android.presentation.common.navigator
 import androidx.appcompat.app.AppCompatActivity
 import com.android.presentation.R
 import com.android.presentation.common.extension.addFragment
+import com.android.presentation.common.extension.replaceFragment
 import com.android.presentation.ui.MainActivity
 import com.android.presentation.ui.city.CityFragment
 import com.android.presentation.ui.spash.SplashFragment
@@ -26,7 +27,7 @@ class Navigator @Inject constructor(
     }
 
     fun showCityList() {
-        fragmentManager.addFragment(
+        fragmentManager.replaceFragment(
             containerViewId = R.id.fragmentContainer,
             fragment = CityFragment.newInstance(),
             tag = CityFragment::class.java.name
