@@ -15,6 +15,7 @@ abstract class BaseViewModel : ViewModel() {
     }
 
     protected fun clearThreads() {
+        disposable.forEach { it.interrupt() }
         disposable.clear()
     }
 
